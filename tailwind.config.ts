@@ -105,6 +105,7 @@ const config: Config = {
         "month-slide-right": {
           "0%": { opacity: "0", transform: "translateX(-30px)" },
           "100%": { opacity: "1", transform: "translateX(0)" },
+        },
         "page-enter": {
           "0%": { opacity: "0", transform: "translateY(12px) scale(0.98)" },
           "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
