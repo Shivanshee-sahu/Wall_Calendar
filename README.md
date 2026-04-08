@@ -3,6 +3,10 @@
 A polished, interactive React calendar component built for the Frontend Engineering Challenge. This project translates the classic physical wall calendar aesthetic into a high-performance, responsive web experience.
 
 ---
+## 🚀 Live Demo
+👉https://wall-calendar-inky.vercel.app/
+
+---
 
 ## ✨ Key Features
 
