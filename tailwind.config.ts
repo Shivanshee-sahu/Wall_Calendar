@@ -116,7 +116,6 @@ export default {
         "month-slide-left": "month-slide-left 0.3s ease-out",
         "month-slide-right": "month-slide-right 0.3s ease-out",
       },
-      },
     },
   },
   plugins: [require("tailwindcss-animate")],
