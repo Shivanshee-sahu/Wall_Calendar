@@ -93,3 +93,157 @@
     gap: 2px;
   }
 }
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Glass morphism utility */
+.glass {
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+}
+
+/* Calendar 3D page-turn animations */
+.calendar-perspective {
+  perspective: 1200px;
+}
+
+.calendar-page {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Forward (next month) — page lifts from bottom, folds up like a wall calendar */
+@keyframes page-turn-next {
+  0% {
+    transform: rotateX(0deg) scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+  }
+  30% {
+    transform: rotateX(-25deg) scale(0.98);
+    opacity: 1;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+  60% {
+    transform: rotateX(-70deg) scale(0.95);
+    opacity: 0.7;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+  }
+  100% {
+    transform: rotateX(-90deg) scale(0.9);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+  }
+}
+
+/* New page coming in from behind */
+@keyframes page-turn-in-next {
+  0% {
+    transform: rotateX(60deg) scale(0.95);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotateX(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Backward (prev month) — page unfolds from top */
+@keyframes page-turn-prev {
+  0% {
+    transform: rotateX(0deg) scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+  }
+  30% {
+    transform: rotateX(25deg) scale(0.98);
+    opacity: 1;
+    box-shadow: 0 -20px 40px rgba(0,0,0,0.15);
+  }
+  60% {
+    transform: rotateX(70deg) scale(0.95);
+    opacity: 0.7;
+  }
+  100% {
+    transform: rotateX(90deg) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes page-turn-in-prev {
+  0% {
+    transform: rotateX(-60deg) scale(0.95);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotateX(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-page-out-next {
+  animation: page-turn-next 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  transform-origin: top center;
+}
+
+.animate-page-out-prev {
+  animation: page-turn-prev 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  transform-origin: bottom center;
+}
+
+.animate-page-in-next {
+  animation: page-turn-in-next 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  transform-origin: top center;
+}
+
+.animate-page-in-prev {
+  animation: page-turn-in-prev 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  transform-origin: bottom center;
+}

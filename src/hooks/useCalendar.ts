@@ -23,7 +23,12 @@ function getStoredNotes(): Record<string, string> {
     return {};
   }
 }
-
+const generateId = () => {
+  if (typeof window !== 'undefined' && window.crypto?.randomUUID) {
+    return window.crypto.randomUUID();
+  }
+  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+};
 function getStoredTasks(): CalendarTask[] {
   try {
     return JSON.parse(localStorage.getItem(TASKS_KEY) || "[]");
@@ -119,9 +124,9 @@ export function useCalendar() {
     return notes[formatDateKey(date)] || "";
   }, [notes]);
 
-  const addTask = useCallback((task: Omit<CalendarTask, "id">) => {
-    setTasks((prev) => [...prev, { ...task, id: crypto.randomUUID() }]);
-  }, []);
+ const addTask = useCallback((task: Omit<CalendarTask, "id">) => {
+  setTasks((prev) => [...prev, { ...task, id: generateId() }]);
+}, []);
 
   const removeTask = useCallback((id: string) => {
     setTasks((prev) => prev.filter((t) => t.id !== id));

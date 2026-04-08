@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import Sidebar from "@/components/Sidebar";
 import CalendarGrid from "@/components/CalendarGrid";
+import { WallCalendar } from "@/components/calendar/WallCalendar";
 import TaskPanel from "@/components/TaskPanel";
 import DaySchedule from "@/components/DaySchedule";
 import PageTransition from "@/components/PageTransition";
@@ -46,22 +47,7 @@ export default function Index() {
         return (
           <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_320px]">
             <div className="space-y-6">
-              <CalendarGrid
-                currentMonth={calendar.currentMonth}
-                slideDirection={calendar.slideDirection}
-                days={days}
-                onPrev={calendar.goToPrevMonth}
-                onNext={calendar.goToNextMonth}
-                onDateClick={calendar.handleDateClick}
-                isToday={calendar.isToday}
-                isSelected={calendar.isSelected}
-                isInRange={calendar.isInRange}
-                isRangeStart={calendar.isRangeStart}
-                isRangeEnd={calendar.isRangeEnd}
-                isCurrentMonth={calendar.isCurrentMonth}
-                hasNote={(d) => !!calendar.getNote(d)}
-                hasTask={(d) => calendar.getTasksForDate(d).length > 0}
-              />
+              <WallCalendar />
               <DaySchedule
                 selectedDate={calendar.selectedDate}
                 tasks={selectedTasks}
